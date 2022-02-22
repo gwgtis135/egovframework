@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.board.service.BoardMapper">
+	
+	<select id="selectBoard" parameterType="egovframework.board.service.BoardVO" resultType="egovframework.board.service.BoardVO">
+		select * from board where id = #{id}
+	</select>
+	
+	<select id="selectAllBoard" resultType="egovframework.board.service.BoardVO">
+		select * from board
+	</select>
+	
+	<insert id="insertBoard"  parameterType="egovframework.board.service.BoardVO">
+		insert into board(title,content,author_id) 
+				values(#{title},#{content})
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="egovframework.board.service.BoardVO">
+		delete from board where id = #{id}
+	</delete>
+	
+	<update id="updateBoard" parameterType="egovframework.board.service.BoardVO">
+		update board set 
+				title = #{title}, 
+				content = #{content},
+				updated_date = current_date
+			where id = #{id}
+	</update>
+	
+	<insert id="insertBoardLog" parameterType="egovframework.board.service.BoardVO">
+		insert into board_log(crud,performer,title,content)
+				values(#{cred},#{performer},#{title},#{content})
+	</insert>
+	
+</mapper>
