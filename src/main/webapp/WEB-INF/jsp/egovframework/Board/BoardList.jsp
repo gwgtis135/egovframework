@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
 </head>
 <body>
-	<a href="selectAllBoard.do"><button type="button">게시판</button></a>
+게시판
 </body>
 </html>
