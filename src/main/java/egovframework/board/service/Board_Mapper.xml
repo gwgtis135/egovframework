@@ -12,7 +12,7 @@
 	
 	<insert id="insertBoard"  parameterType="egovframework.board.service.BoardVO">
 		insert into board(title,content,author_id) 
-				values(#{title},#{content})
+				values(#{title},#{content},#{author_id})
 	</insert>
 	
 	<delete id="deleteBoard" parameterType="egovframework.board.service.BoardVO">
@@ -28,8 +28,11 @@
 	</update>
 	
 	<insert id="insertBoardLog" parameterType="egovframework.board.service.BoardVO">
-		insert into board_log(crud,performer,title,content)
-				values(#{cred},#{performer},#{title},#{content})
+		insert into board_log(id,crud,performer,title,content,author_id)
+				values(#{id},#{crud},#{performer},#{title},#{content},#{author_id})
 	</insert>
 	
+	<select id="getboardinc">
+		select auto_increment from information_schema.tables where table_name = 'board' and table_schema = DATABASE()
+	</select>
 </mapper>
