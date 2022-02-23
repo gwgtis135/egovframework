@@ -18,7 +18,9 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public String insertBoard(BoardVO vo) {
 		vo.setCrud("ins");
+		vo.setPerformer(vo.getAuthor_id());
 		mapper.insertBoard(vo);
+		vo.setId(mapper.getboardinc());
 		mapper.insertBoardLog(vo);
 		return "aa";
 	}

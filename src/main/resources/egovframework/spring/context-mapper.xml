@@ -30,7 +30,7 @@
 	</bean>
 	<bean
 		class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
-		<property name="basePackage" value="egovframework.board.*" />
+		<property name="basePackage" value="egovframework.*.service" />
 	</bean>
 
 </beans>
