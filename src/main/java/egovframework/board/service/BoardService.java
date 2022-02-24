@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface BoardService {
 	public String insertBoard(BoardVO vo);
+	public String deleteBoards(String check);
 	public String deleteBoard(BoardVO vo);
 	public String updateBoard(BoardVO vo);
 	public BoardVO selectBoard(BoardVO vo);

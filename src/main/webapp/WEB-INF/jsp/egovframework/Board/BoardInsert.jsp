@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script>
+	window.onload=function(){
+		var a ='${board}';
+		var val =[];		
+		if(a != null){
+			console.log(a);
+			a = JSON.parse(a);
+			console.log(a.id);
+			document.getElementById("division").value="update";
+		}
+	}
+</script>
 	<form action="BoardInsert.do" method="POST" id="frmins">
 		<table border="1px">
 			<tr>
@@ -20,6 +32,7 @@
 		</table>
 		<input type="submit" value="등록">
 		<input id="btnreset"type="button" value="초기화">
+		<input type="hidden" value="insert" id="division">
 	</form>
 	<script>
 		document.querySelector("#btnreset").addEventListener("click",function(){

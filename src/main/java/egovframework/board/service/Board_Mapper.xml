@@ -3,7 +3,10 @@
 <mapper namespace="egovframework.board.service.BoardMapper">
 	
 	<select id="selectBoard" parameterType="egovframework.board.service.BoardVO" resultType="egovframework.board.service.BoardVO">
-		select id,title,author_id,content,date_format(created_date,'%y-%m-%d') created_date from board where id = #{id}
+		select id,title,author_id,content,
+		date_format(created_date,'%y-%m-%d') created_date,
+		date_format(updated_date,'%y-%m-%d') updated_date 
+		from board where id = #{id}
 	</select>
 	
 	<select id="selectAllBoard" resultType="egovframework.board.service.BoardVO">
@@ -16,7 +19,8 @@
 	</insert>
 	
 	<delete id="deleteBoard" parameterType="egovframework.board.service.BoardVO">
-		delete from board where id = #{id}
+		delete from board 
+		where id = #{id}
 	</delete>
 	
 	<update id="updateBoard" parameterType="egovframework.board.service.BoardVO">
@@ -32,7 +36,7 @@
 				values(#{id},#{crud},#{performer},#{title},#{content},#{author_id})
 	</insert>
 	
-	<select id="getboardinc">
-		select auto_increment from information_schema.tables where table_name = 'board' and table_schema = DATABASE()
+	<select id="getboardinc" resultType="int">
+		select ifnull(max(id),0) from board
 	</select>
 </mapper>
