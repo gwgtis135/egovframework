@@ -12,9 +12,24 @@
 <script type="text/javascript">
 	function CallNotice(id){
 		if(event.target.type != "checkbox"){
+			frm.action="selectBoard.do";
 			frm.id.value=id;
 			frm.submit();	
 		}
+	}
+	window.onload = function(){
+		document.querySelector("#btndel").addEventListener("click",function(e){
+			var chkbox = document.querySelectorAll("input[name=delbox]:checked")
+			var val =[];
+			console.log(chkbox);
+ 			for(i = 0; i<chkbox.length;i++){
+				val.push(chkbox[i].value);
+			} 
+			console.log(val);
+			frm.action="deleteBoards.do";
+			frm.check.value=val;
+			frm.submit();	
+		});
 	}
 </script>
 </head>
@@ -22,7 +37,7 @@
 	게시판
 	<div>
 		<a href="insertBoard.do"><button>글작성</button></a>
-		<a href="deleteBoard.do"><button>글삭제</button></a>
+		<button id="btndel">글삭제</button>
 	</div>
 	<table border="1px">
 		<thead>
@@ -39,15 +54,16 @@
 					<td>${board.title }</td>
 					<td>${board.author_id }</td>
 					<td>${board.created_date }</td>
-					<td><input type="checkbox"
-						id="delbox${board.id }" name="delbox" value="${board.id }"></td>
+					<td><input type="checkbox" id="delbox${board.id }"
+						name="delbox" value="${board.id }"></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
-	<form id="frm" name="frm" method="post" action="selectBoard.do">
+	<form id="frm" name="frm" method="post">
 		<input type="hidden" id="id" name="id">
+		<input type="hidden" id="check" name="check">
 	</form>
 </body>
 </html>

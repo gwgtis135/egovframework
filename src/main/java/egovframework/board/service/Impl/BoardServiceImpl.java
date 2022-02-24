@@ -10,15 +10,17 @@ import egovframework.board.service.BoardVO;
 import egovframework.board.service.BoardMapper;
 
 @Service
-public class BoardServiceImpl implements BoardService{
-	
-	@Autowired 
+public class BoardServiceImpl implements BoardService {
+
+	@Autowired
 	private BoardMapper mapper;
 
 	@Override
 	public String insertBoard(BoardVO vo) {
 		vo.setCrud("ins");
 		vo.setPerformer(vo.getAuthor_id());
+		int i = 1;
+//		i=i/0;
 		mapper.insertBoard(vo);
 		vo.setId(mapper.getboardinc());
 		mapper.insertBoardLog(vo);
@@ -26,11 +28,28 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public String deleteBoards(String check) {
+		String[] sc = check.split(",");
+		BoardVO vo = new BoardVO();
+		for (String c : sc) {
+			vo.setId(Integer.parseInt(c));
+			vo = mapper.selectBoard(vo);
+			vo.setCrud("del");
+			vo.setPerformer("admin");
+			mapper.insertBoardLog(vo);
+			mapper.deleteBoard(vo);
+		}
+		return "bb";
+	}
+
+	@Override
 	public String deleteBoard(BoardVO vo) {
+		vo = mapper.selectBoard(vo);
 		vo.setCrud("del");
-		mapper.deleteBoard(vo);
+		vo.setPerformer(vo.getAuthor_id());
 		mapper.insertBoardLog(vo);
-		return null;
+		mapper.deleteBoard(vo);
+		return "cc";
 	}
 
 	@Override
@@ -43,14 +62,13 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO selectBoard(BoardVO vo) {
-		
+
 		return mapper.selectBoard(vo);
 	}
 
 	@Override
 	public List<BoardVO> selectAllBoard() {
-		
+
 		return mapper.selectAllBoard();
 	}
-
 }
