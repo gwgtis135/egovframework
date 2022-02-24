@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입화면</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 </head>
 <style>
 body {
@@ -26,13 +30,11 @@ caption	{
 	margin-top:10px;
 	padding-bottom:5px
 }
-
 .div_button	{
 	width:600px;
 	text-align:center;
 	margin-top:5px;
 }
-
 </style>
 <body>
 
@@ -97,9 +99,73 @@ caption	{
 	</tr>
 </table>
 <div class="div_button">
-	<button type="submit">저장</button>
+	<button type="button" id="btn_submit">저장</button>
 	<button type="reset">취소</button> 
 </div>
 </form>
+ <script>
+$( function() {
+  $( "#birth" ).datepicker({
+    changeMonth: true,
+    changeYear: true
+  });
+  //버튼을 클릭했을 때 유효성 검사하기 
+  $("#btn_submit").click( function(){
+	  
+	  let userId  = $("#userId").val();
+	  let pass = $("#pass").val();
+	  let name = $("#name").val();
+	  //공백제거
+	  userId = $.trim(userId);
+	  pass = $.trim(pass);
+	  name = $.trim(name);
+	  console.log(userId);
+	  console.log(pass);
+	  console.log(name);
+	  if(userId == ""){
+		  alert("아이디를 입력해주세요");
+		  $("#userId").focus();
+		  return false;
+	  }
+	  if(pass == ""){
+		  alert("패스워드 입력해주세요");
+		  $("#pass").focus();
+		  return false;
+	  }
+	  if(name == ""){
+		  alert("이름을 입력해주세요");
+		  $("#name").focus();
+		  return false;
+	  }
+	  //입력태그 안의 값 공백제거
+	  $("#userId").val(userId);
+	  $("#pass").val(pass);
+	  $("#name").val(name);
+	  
+	  let formData = $("#frm").serialize();
+	  console.log(formData)
+	  
+	  $.ajax({
+		  type:"POST",
+		  data:formData,
+		  url:"joinInsert.do",
+		  dataType:"text",	//리턴타입
+		  
+		  success: function(result){
+			  if(result == "ok"){
+				  alert("저장완료");
+				  location="login.do";	//회원등록 성공시 로그인 페이지 이동
+			  }else{
+				  alert("회원등록 실패");
+			  }
+		  },
+		  error: function(){	//장애발생
+			  alert("오류발생");
+		  }
+	  })
+	  
+  })
+});
+  </script>
 </body>
 </html>

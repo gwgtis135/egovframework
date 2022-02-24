@@ -13,6 +13,7 @@
 			<list>
 				<value>classpath:/egovframework/sqlmap/example/mappers/*.xml </value>
 				<value>classpath:/egovframework/board/service/*.xml </value>
+				<value>classpath:/egovframework/join/service/*.xml </value>
 			</list>
 		</property>
 	</bean>
