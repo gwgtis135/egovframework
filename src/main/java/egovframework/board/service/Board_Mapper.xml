@@ -3,11 +3,11 @@
 <mapper namespace="egovframework.board.service.BoardMapper">
 	
 	<select id="selectBoard" parameterType="egovframework.board.service.BoardVO" resultType="egovframework.board.service.BoardVO">
-		select * from board where id = #{id}
+		select id,title,author_id,content,date_format(created_date,'%y-%m-%d') created_date from board where id = #{id}
 	</select>
 	
 	<select id="selectAllBoard" resultType="egovframework.board.service.BoardVO">
-		select * from board
+		select id,title,author_id,date_format(created_date,'%y-%m-%d') created_date from board
 	</select>
 	
 	<insert id="insertBoard"  parameterType="egovframework.board.service.BoardVO">

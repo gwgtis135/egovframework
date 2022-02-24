@@ -9,6 +9,20 @@ public class BoardVO {
 	String title;
 	String content;
 	String author_id;
+	String created_date;
+	String updated_date;
+	public String getCreated_date() {
+		return created_date;
+	}
+	public void setCreated_date(String created_date) {
+		this.created_date = created_date;
+	}
+	public String getUpdated_date() {
+		return updated_date;
+	}
+	public void setUpdated_date(String updated_date) {
+		this.updated_date = updated_date;
+	}
 	public int getLog_id() {
 		return log_id;
 	}
@@ -54,7 +68,9 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [log_id=" + log_id + ", crud=" + crud + ", performer=" + performer + ", id=" + id + ", title="
-				+ title + ", content=" + content + ", author_id=" + author_id + "]";
+				+ title + ", content=" + content + ", author_id=" + author_id + ", created_date=" + created_date
+				+ ", updated_date=" + updated_date + "]";
 	}
+	
 
 }

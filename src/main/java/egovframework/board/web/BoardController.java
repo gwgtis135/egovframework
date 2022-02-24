@@ -34,6 +34,16 @@ public class BoardController {
 	}
 	@RequestMapping("TempBoard.do")
 	public String TempBoard() {
-		return "Board/BoardList";
+		return "redirect:selectAllBoard.do";
 	}
+	@RequestMapping("selectBoard.do")
+	public String selectBoard(Model model,BoardVO vo) {
+		vo.setId(vo.getId());
+		vo = service.selectBoard(vo);
+		System.out.println(vo);
+		model.addAttribute("board",vo);
+		return "Board/BoardSelect";
+	}
+	@RequestMapping("deleteBoard.do")
+	public String deleteBoard()
 }
