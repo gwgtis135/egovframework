@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JoinController {
 
+	/*
+	 * 회원등록화면
+	*/
+	
 	@RequestMapping("join.do")
 	public String selectJoinPage() {
-		return "Join/join";
+		return "Join/Join";
 	}
 }
