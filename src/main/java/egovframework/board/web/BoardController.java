@@ -21,11 +21,12 @@ public class BoardController {
 	BoardService service;
 	
 	@RequestMapping("selectAllBoard.do")
-	public String selectAllBoard(Model model) {
+	public String selectAllBoard(Model model,HttpServletRequest req) {
 		System.out.println("selectAllboard");
 		List<BoardVO> list = service.selectAllBoard();
 		System.out.println(list.toString());
 		model.addAttribute("boardlist",list);
+		model.addAttribute("result", req.getParameter("result"));
 		return "Board/BoardList";
 	}
 	
@@ -35,9 +36,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping("BoardInsert.do")
-	public String boardInsert(BoardVO vo) {
+	public String boardInsert(BoardVO vo,Model model) {
+		System.out.println("BoardInsert.do");
 		System.out.println(vo.toString());
-		service.insertBoard(vo);
+		
+		String result = service.insertBoard(vo);
+		model.addAttribute("result", result);
 		return "redirect:TempBoard.do";
 	}
 	
@@ -51,18 +55,20 @@ public class BoardController {
 	}
 	
 	@RequestMapping("deleteBoards.do")
-	public String deleteBoards(HttpServletRequest req) {
+	public String deleteBoards(HttpServletRequest req,Model model) {
 		String check = req.getParameter("check");
 		System.out.println(check);
-		service.deleteBoards(check);
+		String result = service.deleteBoards(check);
+		model.addAttribute("result", result);
 		return "redirect:TempBoard.do";
 	}
 	
 	@RequestMapping("deleteBoard.do")
-	public String deleteBoard(HttpServletRequest req) {
+	public String deleteBoard(HttpServletRequest req,Model model) {
 		BoardVO vo = new BoardVO();
 		vo.setId(Integer.parseInt(req.getParameter("id")));
-		service.deleteBoard(vo);
+		String result = service.deleteBoard(vo);
+		model.addAttribute("result", result);
 		return "redirect:TempBoard.do";
 	}
 	
@@ -80,8 +86,18 @@ public class BoardController {
 		return "Board/BoardInsert";
 	}
 	
+	@RequestMapping("BoardUpdate.do")
+	public String boardUpdate(BoardVO vo,Model model) {
+		System.out.println(vo.toString());
+		String result = service.updateBoard(vo);
+		model.addAttribute("result", result);
+		model.addAttribute("id", vo.getId());
+		return "redirect:TempBoard.do";
+	}
+	
 	@RequestMapping("TempBoard.do")
-	public String TempBoard() {
+	public String TempBoard(HttpServletRequest req,Model model) {
+		model.addAttribute("result", req.getParameter("result"));
 		return "redirect:selectAllBoard.do";
 	}
 }

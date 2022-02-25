@@ -3,19 +3,18 @@
 <mapper namespace="egovframework.board.service.BoardMapper">
 	
 	<select id="selectBoard" parameterType="egovframework.board.service.BoardVO" resultType="egovframework.board.service.BoardVO">
-		select id,title,author_id,content,
-		date_format(created_date,'%y-%m-%d') created_date,
-		date_format(updated_date,'%y-%m-%d') updated_date 
-		from board where id = #{id}
+		select id,title,userid,content,
+		date_format(created_date,'%y-%m-%d') created_date
+		from board where id = #{id} and division = 'board'
 	</select>
 	
 	<select id="selectAllBoard" resultType="egovframework.board.service.BoardVO">
-		select id,title,author_id,date_format(created_date,'%y-%m-%d') created_date from board
+		select id,title,userid,date_format(created_date,'%y-%m-%d') created_date from board where division = 'board'
 	</select>
 	
 	<insert id="insertBoard"  parameterType="egovframework.board.service.BoardVO">
-		insert into board(title,content,author_id) 
-				values(#{title},#{content},#{author_id})
+		insert into board(title,content,userid) 
+				values(#{title},#{content},#{userid})
 	</insert>
 	
 	<delete id="deleteBoard" parameterType="egovframework.board.service.BoardVO">
@@ -26,14 +25,13 @@
 	<update id="updateBoard" parameterType="egovframework.board.service.BoardVO">
 		update board set 
 				title = #{title}, 
-				content = #{content},
-				updated_date = current_date
+				content = #{content}
 			where id = #{id}
 	</update>
 	
 	<insert id="insertBoardLog" parameterType="egovframework.board.service.BoardVO">
-		insert into board_log(id,crud,performer,title,content,author_id)
-				values(#{id},#{crud},#{performer},#{title},#{content},#{author_id})
+		insert into board_log(id,crud,performer,title,content,userid)
+				values(#{id},#{crud},#{performer},#{title},#{content},#{userid})
 	</insert>
 	
 	<select id="getboardinc" resultType="int">

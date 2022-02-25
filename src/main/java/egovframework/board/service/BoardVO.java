@@ -8,23 +8,16 @@ public class BoardVO {
 	int id;
 	String title;
 	String content;
-	String author_id;
-	String created_date;
-	String updated_date;
-	public String getCreated_date() {
-		return created_date;
-	}
-	public void setCreated_date(String created_date) {
-		this.created_date = created_date;
-	}
-	public String getUpdated_date() {
-		return updated_date;
-	}
-	public void setUpdated_date(String updated_date) {
-		this.updated_date = updated_date;
-	}
+	String userid;
+	String createdDate;
 	public int getLog_id() {
 		return log_id;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public void setLog_id(int log_id) {
 		this.log_id = log_id;
@@ -59,18 +52,17 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getAuthor_id() {
-		return author_id;
+	public String getCreatedDate() {
+		return createdDate;
 	}
-	public void setAuthor_id(String author_id) {
-		this.author_id = author_id;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 	@Override
 	public String toString() {
 		return "BoardVO [log_id=" + log_id + ", crud=" + crud + ", performer=" + performer + ", id=" + id + ", title="
-				+ title + ", content=" + content + ", author_id=" + author_id + ", created_date=" + created_date
-				+ ", updated_date=" + updated_date + "]";
+				+ title + ", content=" + content + ", userid=" + userid + ", createdDate=" + createdDate
+				+ "]";
 	}
-	
 
 }

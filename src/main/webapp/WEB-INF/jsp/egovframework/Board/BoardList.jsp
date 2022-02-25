@@ -19,17 +19,23 @@
 	}
 	window.onload = function(){
 		document.querySelector("#btndel").addEventListener("click",function(e){
-			var chkbox = document.querySelectorAll("input[name=delbox]:checked")
-			var val =[];
-			console.log(chkbox);
- 			for(i = 0; i<chkbox.length;i++){
-				val.push(chkbox[i].value);
-			} 
-			console.log(val);
-			frm.action="deleteBoards.do";
-			frm.check.value=val;
-			frm.submit();	
+			if(confirm("삭제하시겠습니까?")){
+				var chkbox = document.querySelectorAll("input[name=delbox]:checked")
+				var val =[];
+				console.log(chkbox);
+	 			for(i = 0; i<chkbox.length;i++){
+					val.push(chkbox[i].value);
+				} 
+				console.log(val);
+				frm.action="deleteBoards.do";
+				frm.check.value=val;
+				frm.submit();	
+			}
 		});
+		var result = '${result }';
+		if(result!=''){
+			alert(result);
+		}
 	}
 </script>
 </head>
@@ -52,8 +58,8 @@
 				<tr onclick="CallNotice(${board.id })">
 					<td>${board.id }</td>
 					<td>${board.title }</td>
-					<td>${board.author_id }</td>
-					<td>${board.created_date }</td>
+					<td>${board.userid }</td>
+					<td>${board.createdDate }</td>
 					<td><input type="checkbox" id="delbox${board.id }"
 						name="delbox" value="${board.id }"></td>
 				</tr>
@@ -62,8 +68,8 @@
 	</table>
 
 	<form id="frm" name="frm" method="post">
-		<input type="hidden" id="id" name="id">
-		<input type="hidden" id="check" name="check">
+		<input type="hidden" id="id" name="id"> <input type="hidden"
+			id="check" name="check">
 	</form>
 </body>
 </html>

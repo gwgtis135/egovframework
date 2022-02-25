@@ -6,22 +6,22 @@
 		</Console> 
 	</Appenders>
 	<Loggers>
-
-		<Logger name="java.sql" level="INFO" additivity="false">
+		<!-- log SQL with timing information, post execution -->
+		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+ 		<Logger name="java.sql" level="INFO" additivity="false">
 			<AppenderRef ref="console" />
 		</Logger>
 
 		<Logger name="egovframework" level="DEBUG" additivity="false">
 			<AppenderRef ref="console" />
 		</Logger>
-		<!-- log SQL with timing information, post execution -->
-		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
-			<AppenderRef ref="console" />
-		</Logger>
+
 		<Logger name="org.springframework" level="INFO"
 			additivity="false">
 			<AppenderRef ref="console" />
-		</Logger>
+		</Logger> 
 		<Root level="INFO">
 			<AppenderRef ref="console" />
 		</Root>

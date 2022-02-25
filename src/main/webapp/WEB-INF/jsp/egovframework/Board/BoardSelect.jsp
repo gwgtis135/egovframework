@@ -10,8 +10,10 @@
 <script type="text/javascript">
 	window.onload = function(){
 		document.querySelector("#btndel").addEventListener("click",function(e){
-			frm.action="deleteBoard.do";
-			frm.submit();	
+			if(confirm("삭제하시겠습니까?")){
+				frm.action="deleteBoard.do";
+				frm.submit();
+			}
 		});
 		document.querySelector("#btnupd").addEventListener("click",function(e){
 			frm.action="updateBoard.do";
@@ -22,7 +24,7 @@
 		<table border="1px">
 			<tr>
 				<td><input type="text" name="title" id="title" value="${board.title }" readonly>
-				<input type="text" name="author_id" id="author_id" value="${board.author_id }" readonly></td>
+				<input type="text" name="userid" id="userid" value="${board.userid }" readonly></td>
 			</tr>
 			<tr>
 				<td><textarea rows="10" cols="50" id="content" name="content" readonly>${board.content }</textarea></td>
