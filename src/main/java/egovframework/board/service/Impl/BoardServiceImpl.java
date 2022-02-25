@@ -18,13 +18,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public String insertBoard(BoardVO vo) {
 		vo.setCrud("ins");
-		vo.setPerformer(vo.getAuthor_id());
-		int i = 1;
-//		i=i/0;
+		vo.setPerformer(vo.getUserid());
 		mapper.insertBoard(vo);
 		vo.setId(mapper.getboardinc());
 		mapper.insertBoardLog(vo);
-		return "aa";
+		return "inserted!";
 	}
 
 	@Override
@@ -39,25 +37,26 @@ public class BoardServiceImpl implements BoardService {
 			mapper.insertBoardLog(vo);
 			mapper.deleteBoard(vo);
 		}
-		return "bb";
+		return "deleted!";
 	}
 
 	@Override
 	public String deleteBoard(BoardVO vo) {
 		vo = mapper.selectBoard(vo);
 		vo.setCrud("del");
-		vo.setPerformer(vo.getAuthor_id());
+		vo.setPerformer(vo.getUserid());
 		mapper.insertBoardLog(vo);
 		mapper.deleteBoard(vo);
-		return "cc";
+		return "deleted!";
 	}
 
 	@Override
 	public String updateBoard(BoardVO vo) {
 		vo.setCrud("upd");
+		vo.setPerformer(vo.getUserid());
 		mapper.updateBoard(vo);
 		mapper.insertBoardLog(vo);
-		return null;
+		return "updated!";
 	}
 
 	@Override
