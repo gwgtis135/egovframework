@@ -27,7 +27,7 @@
 			document.getElementById("btnins").addEventListener("click",
 					function() {
 				console.log(document.getElementById("title").value)
-				//document.getElementById("frmins").submit();
+				document.getElementById("frmins").submit();
 					});
 			
 			
@@ -84,12 +84,9 @@
 			        	temptitle = text_val;
 			        }
 			    });
-			document.getElementById("btnattach").addEventListener("click",function(){
-				
-			})
 		}
 	</script>
-	<form method="POST" id="frmins">
+	<form method="POST" id="frmins" enctype="multipart/form-data">
 		<table border="1px">
 			<tr>
 				<td><input type="text" name="title" id="title" placeholder="제목">

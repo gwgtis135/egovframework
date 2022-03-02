@@ -34,6 +34,10 @@
 				values(#{id},#{crud},#{performer},#{title},#{content},#{userid})
 	</insert>
 	
+	<insert id="insertattachFile" parameterType="egovframework.board.service.FileVO">
+		insert into attachfile(board_id,file_path) values(#{board_id},#{file_path})
+	</insert>
+	
 	<select id="getboardinc" resultType="int">
 		select ifnull(max(id),0) from board
 	</select>

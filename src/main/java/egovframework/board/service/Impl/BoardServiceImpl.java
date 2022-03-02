@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import egovframework.board.service.BoardMapper;
 import egovframework.board.service.BoardService;
 import egovframework.board.service.BoardVO;
-import egovframework.board.service.BoardMapper;
+import egovframework.board.service.FileVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -20,6 +21,10 @@ public class BoardServiceImpl implements BoardService {
 		vo.setCrud("ins");
 		vo.setPerformer(vo.getUserid());
 		mapper.insertBoard(vo);
+		List<FileVO> fvolist = vo.getFilevo();
+		for(int i = 0; i<fvolist.size();i++) {
+			fvolist.get(i).setBoard_id(mapper.getboardinc());
+		}
 		vo.setId(mapper.getboardinc());
 		mapper.insertBoardLog(vo);
 		return "inserted!";
