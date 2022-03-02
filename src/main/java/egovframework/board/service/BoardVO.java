@@ -1,5 +1,7 @@
 package egovframework.board.service;
 
+import java.util.List;
+
 public class BoardVO {
 
 	int log_id;
@@ -10,6 +12,13 @@ public class BoardVO {
 	String content;
 	String userid;
 	String createdDate;
+	List<FileVO> filevo;
+	public List<FileVO> getFilevo() {
+		return filevo;
+	}
+	public void setFilevo(List<FileVO> filevo) {
+		this.filevo = filevo;
+	}
 	public int getLog_id() {
 		return log_id;
 	}
@@ -62,7 +71,7 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [log_id=" + log_id + ", crud=" + crud + ", performer=" + performer + ", id=" + id + ", title="
 				+ title + ", content=" + content + ", userid=" + userid + ", createdDate=" + createdDate
-				+ "]";
+				+ ", fileVO" + filevo.toString() + "]";
 	}
 
 }

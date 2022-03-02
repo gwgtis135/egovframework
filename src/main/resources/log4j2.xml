@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-	<Appenders>
+ 	<!-- <Appenders>
  		<Console name="console" target="SYSTEM_OUT">
 			<PatternLayout pattern="%d %5p [%c] %m%n" />
 		</Console> 
-	</Appenders>
+	</Appenders> -->
 	<Loggers>
 		<!-- log SQL with timing information, post execution -->
 		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
