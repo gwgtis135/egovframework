@@ -24,7 +24,7 @@ public class JoinController {
 	@RequestMapping("join.do")
 	public String selectJoinPage() {
 		System.out.println("asdasdasd");
-		return "Join/Join";
+		return "tiles/Join/Join";
 	}
 	
 	
