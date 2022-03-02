@@ -1,7 +1,9 @@
 package egovframework.join.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ public class JoinController {
 	*/
 	@Autowired JoinService joinService;
 	
+	
 	@RequestMapping("join.do")
 	public String selectJoinPage() {
 		System.out.println("asdasdasd");
@@ -26,14 +29,22 @@ public class JoinController {
 	
 	
 	@ResponseBody
-	@PostMapping("joinInsert.do") 
-	public String insertJoin(@RequestBody JoinVO joinVO) { 
-		System.out.println(joinVO); 
-		if(joinService.joinInsert(joinVO) > 0){
-			return "ok";
+	@PostMapping("JoinInsert.do") 
+	public String insertJoin(JoinVO joinVO) { 
+		System.out.println("암호화전:"+joinVO.getPass() );
+		System.out.println("암호화후:"+joinVO.getPass() );
+		
+		System.out.println("인서트 컨트롤러 접속완료");
+		System.out.println(joinVO.getUserId()); 
+		String message = "";
+		int result = joinService.joinInsert(joinVO);
+		
+		if(result > 0){
+			message ="ok";
 		}else {
-			return  "no"; 
+			message ="no";
 		}
+		return message;
   }
 	 
 }

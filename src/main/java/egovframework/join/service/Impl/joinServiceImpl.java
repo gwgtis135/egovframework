@@ -10,10 +10,12 @@ import egovframework.join.service.JoinVO;
 @Service
 public class joinServiceImpl implements JoinService {
 
-	@Autowired(required=true) JoinMapper joinMapper;
+	@Autowired JoinMapper joinMapper;
 	
 	@Override
 	public int joinInsert(JoinVO joinVO)  {
+		System.out.println("서비스");
+		System.out.println(joinVO.toString());
 		return joinMapper.joinInsert(joinVO);
 	}
 
