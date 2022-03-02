@@ -6,9 +6,9 @@ public class JoinVO {
 	private String userId ;
 	private String pass;
 	private String name;
+	private String gender;
 	private String birth;
 	private String phone;
-	private String gender;
 	private String zipcode;
 	private String address;
 	private String reg;
@@ -66,6 +66,11 @@ public class JoinVO {
 	}
 	public void setReg(String reg) {
 		this.reg = reg;
+	}
+	@Override
+	public String toString() {
+		return "JoinVO [userId=" + userId + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", birth="
+				+ birth + ", phone=" + phone + ", zipcode=" + zipcode + ", address=" + address + ", reg=" + reg + "]";
 	}
 
 	

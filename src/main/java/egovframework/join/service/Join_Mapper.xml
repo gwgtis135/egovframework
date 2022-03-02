@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="egovframework.join.service.Join_Mapper">
+<mapper namespace="egovframework.join.service.JoinMapper">
 <select id="selectJoin" resultType="egovframework.join.service.JoinVO">
 	select * from member
 </select>
 <insert id="joinInsert">
-	insert into member(user_id,pass,name,birth,phone,gender,zip_code, address) values(#{userId},#{pass},#{name},#{birth},{phone},{gender},#{zipCode},#{address}); 
+	insert into member(userid,pass,name,birth,phone,gender,zipcode, address) 
+	values(#{userId},#{pass},#{name},#{birth},#{phone},#{gender},#{zipcode},#{address}); 
 </insert>
 </mapper>

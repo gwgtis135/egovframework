@@ -79,7 +79,7 @@ caption	{
 	<tr>
 		<th><label for="birth">생년월일</label></th>
 		<td>
-		<input type="text" name="birth" id="birth" readonly>
+		<input type="text" name="birth" id="birth">
 		</td>
 	</tr>
 	<tr>
@@ -146,12 +146,13 @@ $( function() {
 	  console.log(formData)
 	  
 	  $.ajax({
-		  type:"POST",
-		  data:formData,
-		  url:"joinInsert.do",
-		  dataType:"text",	//리턴타입
-		  
+		  url:"JoinInsert.do",
+		  method:"POST",
+		  data: formData,
+		  dataType:"Text",	//리턴타입
 		  success: function(result){
+			  console.log('성공했어요')
+			  console.log(result)
 			  if(result == "ok"){
 				  alert("저장완료");
 				  location="login.do";	//회원등록 성공시 로그인 페이지 이동
@@ -166,6 +167,22 @@ $( function() {
 	  
   })
 });
+$.fn.serializeObject = function()
+{
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
   </script>
 </body>
 </html>
