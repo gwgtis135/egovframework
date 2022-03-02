@@ -3,6 +3,7 @@ package egovframework.board.web;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -33,7 +34,6 @@ public class BoardController {
 	public String selectAllBoard(Model model,HttpServletRequest req) {
 		System.out.println("selectAllboard");
 		List<BoardVO> list = service.selectAllBoard();
-		System.out.println(list.toString());
 		model.addAttribute("boardlist",list);
 		model.addAttribute("result", req.getParameter("result"));
 		return "Board/BoardList";
@@ -73,15 +73,9 @@ public class BoardController {
 					System.out.println(String.format("[파일형식이 아닌 파라미터] 파라미터명: %s, 파일 명: %s, 파일크기: %s bytes <br>",
 							item.getFieldName(), item.getString(), item.getSize()));
 					switch (item.getFieldName()) {
-					case "title":
-						vo.setTitle(item.getString());
-						break;
-					case "userid":
-						vo.setTitle(item.getString());
-						break;
-					case "content":
-						vo.setTitle(item.getString());
-						break;
+					case "title": vo.setTitle(item.getString()); break;
+					case "userid": vo.setUserid(item.getString()); break;
+					case "content": vo.setContent(item.getString()); break;
 					}
 					
 				} else {
@@ -94,12 +88,21 @@ public class BoardController {
 						int index = item.getName().lastIndexOf(separator);
 						String fileName = item.getName().substring(index + 1);
 						System.out.println("2" + fileName);
+						File folder = new File(realPath);
+						if(!folder.exists()) {
+							try {
+								folder.mkdir();
+							}catch(Exception e) {
+								System.out.println("폴더 생성 에러");
+							}
+						}
 						File uploadFile = new File(realPath + separator + fileName);
 						System.out.println("3" + uploadFile);
 						System.out.println("3" + realPath);
 						item.write(uploadFile);
 						System.out.println("4" + separator);
-						fvo.setFile_path(realPath+separator+fileName);
+						fvo.setFilePath(savePath+separator+fileName);
+						fvo.setfileName(fileName);
 						fvolist.add(fvo);
 					}
 				}
@@ -113,8 +116,8 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		System.out.println(vo.toString());
-//		String result = service.insertBoard(vo);
-		String result="";
+		String result = service.insertBoard(vo);
+//		String result="";
 		model.addAttribute("result", result);
 		return "redirect:TempBoard.do";
 	}
@@ -173,5 +176,10 @@ public class BoardController {
 	public String TempBoard(HttpServletRequest req,Model model) {
 		model.addAttribute("result", req.getParameter("result"));
 		return "redirect:selectAllBoard.do";
+	}
+	@RequestMapping("filedown.do")
+	public String filedown(HttpServletRequest req,Model model) {		
+		model.addAttribute("filename","텍스트1");
+		return "Board/filedown";
 	}
 }

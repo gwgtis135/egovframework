@@ -12,6 +12,7 @@ public interface BoardMapper {
 	public int insertBoardLog(BoardVO vo);
 	public BoardVO selectBoard(BoardVO vo);
 	public List<BoardVO> selectAllBoard();
-	public int insertattachFile(BoardVO vo);
+	public List<FileVO> selectFile(FileVO vo);
+	public int insertattachFile(FileVO vo);
 	public int getboardinc();
 }

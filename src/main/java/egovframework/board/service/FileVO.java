@@ -2,28 +2,35 @@ package egovframework.board.service;
 
 public class FileVO {
 	int id;
-	int board_id;
-	String file_path;
+	int boardId;
+	String fileName;
+	String filePath;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
-		this.board_id=id;
+		this.id=id;
 	}
-	public int getBoard_id() {
-		return board_id;
+	public int getBoardId() {
+		return boardId;
 	}
-	public void setBoard_id(int board_id) {
-		this.board_id = board_id;
+	public void setBoardId(int board_id) {
+		this.boardId = board_id;
 	}
-	public String getFile_path() {
-		return file_path;
+	public String getFilePath() {
+		return filePath;
 	}
-	public void setFile_path(String file_path) {
-		this.file_path = file_path;
+	public void setFilePath(String file_path) {
+		this.filePath = file_path;
+	}
+	public String getfileName() {
+		return fileName;
+	}
+	public void setfileName(String file_name) {
+		this.fileName = file_name;
 	}
 	@Override
 	public String toString() {
-		return "FileVO [id=" + id + ", board_id=" + board_id + ", file_path=" + file_path + "]";
+		return "FileVO [id=" + id + ", board_id=" + boardId + ", file_path=" + filePath + ", file_name=" + fileName + "]";
 	}
 }
