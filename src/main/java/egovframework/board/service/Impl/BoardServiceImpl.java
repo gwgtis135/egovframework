@@ -21,11 +21,18 @@ public class BoardServiceImpl implements BoardService {
 		vo.setCrud("ins");
 		vo.setPerformer(vo.getUserid());
 		mapper.insertBoard(vo);
+		int boardid = mapper.getboardinc();
+		System.out.println(boardid);
 		List<FileVO> fvolist = vo.getFilevo();
+		System.out.println(fvolist.size());
 		for(int i = 0; i<fvolist.size();i++) {
-			fvolist.get(i).setBoard_id(mapper.getboardinc());
+			fvolist.get(i).setBoardId(boardid);
+			System.out.println(i);
+			System.out.println(fvolist.get(i));
+			mapper.insertattachFile(fvolist.get(i));
 		}
-		vo.setId(mapper.getboardinc());
+		vo.setId(boardid);
+		System.out.println(boardid);
 		mapper.insertBoardLog(vo);
 		return "inserted!";
 	}
@@ -66,13 +73,15 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO selectBoard(BoardVO vo) {
-
-		return mapper.selectBoard(vo);
+		BoardVO rvo = mapper.selectBoard(vo);
+		FileVO fvo = new FileVO();
+		fvo.setBoardId(vo.getId());
+		rvo.setFilevo(mapper.selectFile(fvo));
+		return rvo;
 	}
 
 	@Override
 	public List<BoardVO> selectAllBoard() {
-
 		return mapper.selectAllBoard();
 	}
 }

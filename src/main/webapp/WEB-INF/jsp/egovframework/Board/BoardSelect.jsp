@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +22,24 @@
 		});
 	}
 </script>
-		<table border="1px">
+		<table border="1px solid">
 			<tr>
 				<td><input type="text" name="title" id="title" value="${board.title }" readonly>
 				<input type="text" name="userid" id="userid" value="${board.userid }" readonly></td>
+			</tr>
+			<tr>
+				<c:choose>
+					<c:when test="${not empty board.filevo }">
+						<td>
+							<c:forEach var="file" items="${board.filevo }">
+								<a href="filedown.do">${file.fileName }</a><br>
+							</c:forEach>
+						</td>
+					</c:when>
+					<c:otherwise>
+						<td>첨부파일 없음</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 			<tr>
 				<td><textarea rows="10" cols="50" id="content" name="content" readonly>${board.content }</textarea></td>

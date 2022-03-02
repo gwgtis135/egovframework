@@ -12,6 +12,10 @@
 		select id,title,userid,date_format(created_date,'%y-%m-%d') created_date from board where division = 'board'
 	</select>
 	
+	<select id="selectFile" parameterType="egovframework.board.service.FileVO" resultType="egovframework.board.service.FileVO">
+		select * from attachfile where board_id = #{boardId}
+	</select>
+	
 	<insert id="insertBoard"  parameterType="egovframework.board.service.BoardVO">
 		insert into board(title,content,userid) 
 				values(#{title},#{content},#{userid})
@@ -35,7 +39,7 @@
 	</insert>
 	
 	<insert id="insertattachFile" parameterType="egovframework.board.service.FileVO">
-		insert into attachfile(board_id,file_path) values(#{board_id},#{file_path})
+		insert into attachfile(board_id,file_path,file_name) values(#{boardId},#{filePath},#{fileName})
 	</insert>
 	
 	<select id="getboardinc" resultType="int">

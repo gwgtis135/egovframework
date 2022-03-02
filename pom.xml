@@ -176,23 +176,24 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.0.4</version>
-        </dependency>
-        
-		        <!-- Spring Security -->
-		 <dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-web</artifactId>
-		<version>${org.springframework.security-version}</version>
-		 </dependency> <dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-config</artifactId>
-		<version>${org.springframework.security-version}</version>
-		 </dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security-version}</version>
+		</dependency>
 		<dependency>
 		<groupId>org.springframework.security</groupId>
 		<artifactId>spring-security-taglibs</artifactId>
@@ -266,9 +267,6 @@
 			</exclusions>
 		</dependency>
 		
-
-		
-
 		<!-- mysql이나 oracle DB 사용시 아래 설정 추가 <dependency> <groupId>ojdbc</groupId> 
 			<artifactId>ojdbc</artifactId> <version>14</version> <scope>system</scope> 
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc-14.jar</systemPath> 
