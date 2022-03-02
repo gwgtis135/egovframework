@@ -37,7 +37,7 @@ caption	{
 }
 </style>
 <body>
-
+<div class="col-lg-9">
 <table>
 	<tr>
 		<th width="25%">홈</th>
@@ -103,6 +103,7 @@ caption	{
 	<button type="reset">취소</button> 
 </div>
 </form>
+</div>
  <script>
 $( function() {
   $( "#birth" ).datepicker({

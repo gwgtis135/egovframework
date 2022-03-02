@@ -36,7 +36,7 @@ public class BoardController {
 		List<BoardVO> list = service.selectAllBoard();
 		model.addAttribute("boardlist",list);
 		model.addAttribute("result", req.getParameter("result"));
-		return "Board/BoardList";
+		return "tiles/Board/BoardList";
 	}
 	
 	@RequestMapping("insertBoard.do")
