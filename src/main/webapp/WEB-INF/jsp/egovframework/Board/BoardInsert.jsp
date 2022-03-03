@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
 			// 컨텐츠 텍스트에어리어 값 지정
 			var tempcontent = ''; 
 			document.getElementById("content").addEventListener("input",function(){
-			    const maxByte = 1000; //최대치
+			    const maxByte = <spring:message code="board.content.byte" />; //최대치
 			    const text_val = document.getElementById("content").value; //문자열
 			    const text_len = text_val.length; //문자 수
 			    let totalByte=0;
@@ -50,12 +51,12 @@
 			        if(uni_char.length>4){
 			            totalByte += 2;
 			        }else{
-			            totalByte += 1;
+ 			            totalByte += 1;
 			        }
 			    }
 			    
 			    if(totalByte>maxByte){
-			    	 alert('최대 1000Byte까지만 입력가능합니다.'); 
+			    	 alert("<spring:message code="errors.overbyte" arguments="내용,1000" />"); 
 			    	document.getElementById("content").value = tempcontent;
 			        }else{
 			        	tempcontent = text_val;
@@ -63,7 +64,7 @@
 			    });
 			var temptitle = ''; 
 			document.getElementById("title").addEventListener("input",function(){
-			    const maxByte = 100; //최대치
+			    const maxByte = <spring:message code="board.title.byte" />; //최대치
 			    const text_val = document.getElementById("temptitle").value; //문자열
 			    const text_len = text_val.length; //문자 수
 			    let totalByte=0;
@@ -78,7 +79,7 @@
 			    }
 			    
 			    if(totalByte>maxByte){
-			    	 alert('최대 100Byte까지만 입력가능합니다.'); 
+			    	 alert("<spring:message code="errors.overbyte" arguments="제목,100" />"); 
 			    	document.getElementById("content").value = temptitle;
 			        }else{
 			        	temptitle = text_val;
@@ -93,14 +94,14 @@
 					<input type="text" name="userid" id="userid" placeholder="작성자"></td>
 			</tr>
 			<tr>
-				<td style="text-align:right"><input type="file" name="file"></td>
+				<td style="text-align:right"><input type="file" name="file" multiple></td>
 			</tr>
 			<tr>
 				<td><textarea rows="10" cols="50" id="content" name="content"></textarea></td>
 			</tr>
 		</table>
-		<input type="button" value="등록" id="btnins"> <input
-			id="btnreset" type="button" value="초기화"> <input type="hidden"
+		<input type="button" value="<spring:message code="button.create" />" id="btnins"> <input
+			id="btnreset" type="button" value="<spring:message code="button.reset" />"> <input type="hidden"
 			id="id" name="id" value="0">
 	</form>
 	<script>

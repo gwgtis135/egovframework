@@ -10,7 +10,7 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/tiles/content.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
 	</definition>
-	
+		
 	<definition name="tiles/*" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/jsp/{1}.jsp" />
 	</definition>
@@ -19,13 +19,20 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/egovframework/{1}/{2}.jsp" />
 	</definition>
 	
-	<definition name="egovframework/*/*" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/jsp/egovframework/{1}/{2}.jsp"/>
+	<definition name="boardTemplate" template="/WEB-INF/jsp/tiles/Boardlayout.jsp">
+		<put-attribute name="boardheader" value="/WEB-INF/jsp/tiles/boardheader.jsp" />
+		<put-attribute name="boardsidebar" value="/WEB-INF/jsp/tiles/sidebar.jsp" />
+		<put-attribute name="boardnav" value="/WEB-INF/jsp/tiles/nav.jsp" />
+		<put-attribute name="boardcontent" value="/WEB-INF/jsp/tiles/content.jsp" />
+		<put-attribute name="boardfooter" value="/WEB-INF/jsp/tiles/footer.jsp" />
 	</definition>
-	<definition name="egovframework/*/*/*/*" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/jsp/egovframework/{1}/{2}/{3}/{4}.jsp"/>
+	
+	<definition name="boardtiles/*" extends="boardTemplate">
+		<put-attribute name="boardcontent" value="/WEB-INF/jsp/{1}.jsp" />
 	</definition>
-	<definition name="egovframework/*/*/*/*/*" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/jsp/egovframework/{1}/{2}/{3}/{4}/{5}.jsp"/>
+	
+	<definition name="boardtiles/*/*" extends="boardTemplate">
+		<put-attribute name="boardcontent" value="/WEB-INF/jsp/egovframework/{1}/{2}.jsp" />
 	</definition>
+	
 </tiles-definitions>

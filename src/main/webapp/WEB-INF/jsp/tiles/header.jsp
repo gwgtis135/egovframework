@@ -15,7 +15,7 @@
                                 <a href="#"><!-- <i class="fa fa-user"></i>  -->로그인</a>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><!-- <i class="fa fa-user"></i>  -->회원가입</a>
+                                <a href="login.do"><i class="fa fa-user"></i> Login</a>
                             </div>
                         </div>
                     </div>

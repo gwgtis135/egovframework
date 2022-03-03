@@ -36,12 +36,12 @@ public class BoardController {
 		List<BoardVO> list = service.selectAllBoard();
 		model.addAttribute("boardlist",list);
 		model.addAttribute("result", req.getParameter("result"));
-		return "tiles/Board/BoardList";
+		return "boardtiles/Board/BoardList";
 	}
 	
 	@RequestMapping("insertBoard.do")
 	public String insertBoard() {
-		return "Board/BoardInsert";
+		return "boardtiles/Board/BoardInsert";
 	}
 	
 	@RequestMapping("BoardInsert.do")
@@ -128,7 +128,7 @@ public class BoardController {
 		vo = service.selectBoard(vo);
 		System.out.println(vo);
 		model.addAttribute("board",vo);
-		return "Board/BoardSelect";
+		return "boardtiles/Board/BoardSelect";
 	}
 	
 	@RequestMapping("deleteBoards.do")
@@ -160,7 +160,7 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		model.addAttribute("board",js);
-		return "Board/BoardInsert";
+		return "boardtiles/Board/BoardInsert";
 	}
 	
 	@RequestMapping("BoardUpdate.do")
@@ -178,8 +178,10 @@ public class BoardController {
 		return "redirect:selectAllBoard.do";
 	}
 	@RequestMapping("filedown.do")
-	public String filedown(HttpServletRequest req,Model model) {		
-		model.addAttribute("filename","텍스트1");
+	public String filedown(HttpServletRequest req,Model model) {
+		String filename = req.getParameter("name");
+		System.out.println("filename : "+filename);
+		model.addAttribute("filename",filename);
 		return "Board/filedown";
 	}
 }
