@@ -23,12 +23,9 @@
 <!-- partial:partials/_navbar.html -->
     <tiles:insertAttribute name="header" />
     <div class="container">
-	    <div class="row">
-	     <tiles:insertAttribute name="nav" />
 	<!-- partial -->
 	     <!-- partial:partials/_settings-panel.html -->
 	     <tiles:insertAttribute name="content" />
-	     </div>
      </div>
      <tiles:insertAttribute name="footer" />
 </body>
