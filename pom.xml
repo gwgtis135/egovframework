@@ -195,17 +195,17 @@
 			<version>${org.springframework.security-version}</version>
 		</dependency>
 		<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-taglibs</artifactId>
-		<version>${org.springframework.security-version}</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springframework.security-version}</version>
 		</dependency>
-		
+
 		<!-- jsp tiles -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
 			<version>${org.apache.tiles-version}</version>
-			
+
 			<!-- needed to exclude slf4j which causes incompatibilities -->
 			<exclusions>
 				<exclusion>
@@ -227,7 +227,7 @@
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-servlet</artifactId>
 			<version>${org.apache.tiles-version}</version>
-			
+
 			<!-- needed to exclude slf4j which causes incompatibilities -->
 			<exclusions>
 				<exclusion>
@@ -244,12 +244,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>${org.apache.tiles-version}</version>
-			
+
 			<!-- needed to exclude slf4j which causes incompatibilities -->
 			<exclusions>
 				<exclusion>
@@ -266,7 +266,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- mysql이나 oracle DB 사용시 아래 설정 추가 <dependency> <groupId>ojdbc</groupId> 
 			<artifactId>ojdbc</artifactId> <version>14</version> <scope>system</scope> 
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc-14.jar</systemPath> 
