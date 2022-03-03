@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +12,7 @@
 <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="${path}/resources/template/css/style.css" type="text/css">
 </head>
 <style>
 body {
@@ -24,11 +28,11 @@ th,td {
 	padding:3px;
 	line-height:2.0;
 }
-caption	{
+h2	{
 	font-size:15pt;
 	font-weight:bold;
 	margin-top:10px;
-	padding-bottom:5px
+	padding-bottom:5px;
 }
 .div_button	{
 	width:600px;
@@ -37,24 +41,18 @@ caption	{
 }
 </style>
 <body>
+<div class="join_form_div">
 <div class="col-lg-9">
-<table>
-	<tr>
-		<th width="25%">홈</th>
-		<th width="25%"><a href="selectAllBoard.do">게시판</a></th>
-		<th width="25%"><a href="join.do">회원가입</a></th>
-		<th width="25%"><a href="login.do">로그인</a></th>
-	</tr>
-</table>
+
 
 <form id="frm">
 <table>
-	<caption>회원가입 폼</caption>
+	<h2>회원가입 폼</h2>
 	<tr>
 		<th><label for="userId">아이디</label></th>
 		<td>
 		<input type="text" name="userId" id="userId" placeholder="아이디입력">
-		<button type="button">중복체크</button>
+		<button  type="button">중복체크</button>
 		</td>
 	</tr>
 	<tr>
@@ -99,10 +97,11 @@ caption	{
 	</tr>
 </table>
 <div class="div_button">
-	<button type="button" id="btn_submit">저장</button>
-	<button type="reset">취소</button> 
+	<button class="primary-btn" type="button" id="btn_submit">저장</button>
+	<button class="primary-btn" type="reset">취소</button> 
 </div>
 </form>
+</div>
 </div>
  <script>
 $( function() {
