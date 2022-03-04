@@ -24,6 +24,7 @@
 8.  Latest Product Section
 9.  Contact
 10.  Footer Style
+11. layout 로그인, 회원가입
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -395,6 +396,8 @@ ol {
 
 .header__top__right__auth {
 	display: inline-block;
+    margin-left: 10px;
+    margin-right: -6px;
 }
 
 .header__top__right__auth a {
@@ -405,6 +408,17 @@ ol {
 
 .header__top__right__auth a i {
 	margin-right: 6px;
+}
+
+.header__top__right__auth ::after{
+     position: absolute;
+    right: 69px;
+    top: 11px;
+    height: 20px;
+    width: 1px;
+    background: #000000;
+    opacity: 0.1;
+    content: "";
 }
 
 .header__logo {
@@ -3466,3 +3480,8 @@ ol {
 		font-size: 24px;
 	}
 }
+
+/* 회원가입 폼 css */
+	.join_form_div{
+		text-align: -webkit-center;
+	}
