@@ -16,12 +16,8 @@
     String savePath = root + "fileSave";
 
     // 서버에 실제 저장된 파일명
-    String filename = "텍스트1.txt" ;
+    String filename = (String)request.getAttribute("filename");
      
-    // 실제 내보낼 파일명
-    String orgfilename = "테스트.txt" ;
-      
- 
     InputStream in = null;
     OutputStream os = null;
     File file = null;
@@ -49,13 +45,13 @@
              
             // IE
             if(client.indexOf("MSIE") != -1){
-                response.setHeader ("Content-Disposition", "attachment; filename="+new String(orgfilename.getBytes("KSC5601"),"ISO8859_1"));
+                response.setHeader ("Content-Disposition", "attachment; filename="+new String(filename.getBytes("KSC5601"),"ISO8859_1"));
  
             }else{
                 // 한글 파일명 처리
-                orgfilename = new String(orgfilename.getBytes("utf-8"),"iso-8859-1");
+                filename = new String(filename.getBytes("utf-8"),"iso-8859-1");
  
-                response.setHeader("Content-Disposition", "attachment; filename=\"" + orgfilename + "\"");
+                response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
                 response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
             } 
              
