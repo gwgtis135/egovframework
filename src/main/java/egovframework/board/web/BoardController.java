@@ -152,6 +152,7 @@ public class BoardController {
 	@RequestMapping("updateBoard.do")
 	public String updateBoard(BoardVO vo,Model model) {
 		vo = service.selectBoard(vo);
+		System.out.println(vo.toString());
 		ObjectMapper mapper = new ObjectMapper();
 		String js = null;
 		try {

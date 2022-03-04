@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	window.onload = function(){
 		document.querySelector("#btndel").addEventListener("click",function(e){
-			if(confirm("<spring:message code=confirm.delete />")){
+			if(confirm("<spring:message code="confirm.delete" />")){
 				frm.action="deleteBoard.do";
 				frm.submit();
 			}
