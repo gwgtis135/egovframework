@@ -166,6 +166,7 @@ public class BoardController {
 	
 	@RequestMapping("BoardUpdate.do")
 	public String boardUpdate(BoardVO vo,Model model) {
+		
 		System.out.println(vo.toString());
 		String result = service.updateBoard(vo);
 		model.addAttribute("result", result);
