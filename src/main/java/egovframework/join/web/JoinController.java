@@ -1,7 +1,8 @@
 package egovframework.join.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class JoinController {
 	 * 회원등록화면
 	*/
 	@Autowired JoinService joinService;
-	
+	@Inject
 	
 	@RequestMapping("join.do")
 	public String selectJoinPage() {
@@ -31,8 +32,8 @@ public class JoinController {
 	@ResponseBody
 	@PostMapping("JoinInsert.do") 
 	public String insertJoin(JoinVO joinVO) { 
-		System.out.println("암호화전:"+joinVO.getPass() );
-		System.out.println("암호화후:"+joinVO.getPass() );
+		String inputPass = joinVO.getPass();
+		System.out.println("암호화전:"+inputPass);
 		
 		System.out.println("인서트 컨트롤러 접속완료");
 		System.out.println(joinVO.getUserId()); 

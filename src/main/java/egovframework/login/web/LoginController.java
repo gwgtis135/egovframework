@@ -11,6 +11,6 @@ public class LoginController {
 	*/
 	@RequestMapping("login.do")
 	public String selectLoginPage() {
-		return "Login/Login";
+		return "tiles/Login/Login";
 	}
 }

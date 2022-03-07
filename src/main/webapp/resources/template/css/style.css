@@ -57,6 +57,7 @@ h1 {
 
 h2 {
 	font-size: 36px;
+    margin-bottom: 30px;
 }
 
 h3 {
@@ -112,6 +113,10 @@ ol {
   Helper CSS
 -----------------------*/
 
+/*fotter고정 */
+footer {
+	margin-top: 192px;
+}
 .section-title {
 	margin-bottom: 50px;
 	text-align: center;
@@ -412,7 +417,7 @@ ol {
 
 .header__top__right__auth ::after{
      position: absolute;
-    right: 69px;
+    right: 54px;
     top: 11px;
     height: 20px;
     width: 1px;
@@ -3481,7 +3486,8 @@ ol {
 	}
 }
 
-/* 회원가입 폼 css */
-	.join_form_div{
+/* 회원가입, 로그인 폼 css */
+	.il_form_div{
+	    margin-top: 10px;
 		text-align: -webkit-center;
 	}

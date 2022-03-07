@@ -14,37 +14,41 @@
 		})
 	})
 </script>
-</head>
+
 <style>
 body {
-	font-size:9pt;
-	font-family:맑은고딕;
+   font-size:9pt;
+   font-family:맑은고딕;
 }
 table {
-	width:600px;
-	border-collapse:collapse;
+   width:600px;
+   border-collapse:collapse;
 }
 th,td {
-	border:1px solid #cccccc;
-	padding:3px;
-	line-height:2.0;
+   border:1px solid #cccccc;
+   padding:3px;
+   line-height:2.0;
 }
-caption	{
-	font-size:15pt;
-	font-weight:bold;
-	margin-top:10px;
-	padding-bottom:5px
+caption   {
+   font-size:15pt;
+   font-weight:bold;
+   margin-top:10px;
+   padding-bottom:5px
 }
-.div_button	{
-	width:600px;
-	text-align:center;
-	margin-top:5px;
+.div_button   {
+   width:600px;
+   text-align:center;
+   margin-top:5px;
 }
 </style>
+</head>
+
 <body>
+<div class="il_form_div">
+<div class="col-lg-9">
 <form id="frm">
 <table>
-	<caption>로그인</caption>
+	<h2>로그인</h2>
 	<tr>
 		<th><label for="userId">아이디</label></th>
 		<td>
@@ -60,10 +64,12 @@ caption	{
 	</tr>
 </table>
 <div class="div_button">
-	<button type="button" id="btn_submit">로그인</button>
-	<button type="reset">취소</button> 
+	<button class="primary-btn" type="button" id="btn_submit">로그인</button>
+	<button class="primary-btn" type="reset">취소</button> 
 </div>
 </form>
+</div>
+</div>
 
 </body>
 </html>

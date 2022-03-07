@@ -12,10 +12,10 @@
                         <div class="header__top__right">
                             
                             <div class="header__top__right__auth">
-                                <a href="#"><!-- <i class="fa fa-user"></i>  -->로그인</a>
+                                <a href="join.do">회원가입</a>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="login.do"><i class="fa fa-user"></i> Login</a>
+                                <a href="login.do">로그인</a>
                             </div>
                         </div>
                     </div>
@@ -32,18 +32,11 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li class="active"><a href="selectAllBoard.do">게시판</a>
+                             <ul class="header__menu__dropdown">
+                                    <li><a href="#">일반게시판</a></li>
+                                    <li><a href="#">공지게시판</a></li>
+                                </ul></li>
                         </ul>
                     </nav>
                 </div>
