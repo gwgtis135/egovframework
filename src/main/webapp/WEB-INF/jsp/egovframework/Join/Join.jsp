@@ -13,35 +13,37 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="${path}/resources/template/css/style.css" type="text/css">
-</head>
+
 <style>
 body {
-	font-size:9pt;
-	font-family:맑은고딕;
+   font-size:9pt;
+   font-family:맑은고딕;
 }
 table {
-	width:600px;
-	border-collapse:collapse;
+   width:600px;
+   border-collapse:collapse;
 }
 th,td {
-	border:1px solid #cccccc;
-	padding:3px;
-	line-height:2.0;
+   border:1px solid #cccccc;
+   padding:3px;
+   line-height:2.0;
 }
-h2	{
-	font-size:15pt;
-	font-weight:bold;
-	margin-top:10px;
-	padding-bottom:5px;
+caption   {
+   font-size:15pt;
+   font-weight:bold;
+   margin-top:10px;
+   padding-bottom:5px
 }
-.div_button	{
-	width:600px;
-	text-align:center;
-	margin-top:5px;
+.div_button   {
+   width:600px;
+   text-align:center;
+   margin-top:5px;
 }
 </style>
+</head>
+
 <body>
-<div class="join_form_div">
+<div class="il_form_div">
 <div class="col-lg-9">
 
 
